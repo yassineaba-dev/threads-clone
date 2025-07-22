@@ -22,6 +22,7 @@ import useShowToast from "../hooks/useShowToast";
 import userAtom from "../atoms/userAtom";
 
 export default function SignupCard() {
+	const API_URL = import.meta.env.VITE_API_URL;
 	const [showPassword, setShowPassword] = useState(false);
 	const setAuthScreen = useSetRecoilState(authScreenAtom);
 	const [inputs, setInputs] = useState({
@@ -36,7 +37,7 @@ export default function SignupCard() {
 
 	const handleSignup = async () => {
 		try {
-			const res = await fetch("/api/app2/users/signup", {
+			const res = await fetch(API_URL + "/api/app2/users/signup", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
