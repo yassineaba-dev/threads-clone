@@ -21,6 +21,7 @@ import useShowToast from "../hooks/useShowToast";
 import userAtom from "../atoms/userAtom";
 
 export default function LoginCard() {
+	const API_URL = import.meta.env.VITE_API_URL;
 	const [showPassword, setShowPassword] = useState(false);
 	const setAuthScreen = useSetRecoilState(authScreenAtom);
 	const setUser = useSetRecoilState(userAtom);
@@ -34,7 +35,7 @@ export default function LoginCard() {
 	const handleLogin = async () => {
 		setLoading(true);
 		try {
-			const res = await fetch("/api/app2/users/login", {
+			const res = await fetch(API_URL + "/api/app2/users/login", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
