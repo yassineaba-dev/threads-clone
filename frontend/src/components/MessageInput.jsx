@@ -39,7 +39,7 @@ const MessageInput = ({ setMessages }) => {
 		setIsSending(true);
 
 		try {
-			const res = await fetch("/api/app2/messages", {
+			const res = await fetch(API_URL + "/api/app2/messages", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
