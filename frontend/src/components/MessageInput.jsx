@@ -22,6 +22,7 @@ import { BsFillImageFill } from "react-icons/bs";
 import usePreviewImg from "../hooks/usePreviewImg";
 
 const MessageInput = ({ setMessages }) => {
+	const API_URL = import.meta.env.VITE_API_URL;
 	const [messageText, setMessageText] = useState("");
 	const showToast = useShowToast();
 	const selectedConversation = useRecoilValue(selectedConversationAtom);
