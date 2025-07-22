@@ -4,6 +4,7 @@ import userAtom from "../atoms/userAtom";
 import { useRecoilValue } from "recoil";
 
 const useFollowUnfollow = (user) => {
+	const API_URL = import.meta.env.VITE_API_URL;
 	const currentUser = useRecoilValue(userAtom);
 	const [following, setFollowing] = useState(user.followers.includes(currentUser?._id));
 	const [updating, setUpdating] = useState(false);
@@ -18,7 +19,7 @@ const useFollowUnfollow = (user) => {
 
 		setUpdating(true);
 		try {
-			const res = await fetch(`/api/app2/users/follow/${user._id}`, {
+			const res = await fetch(API_URL + `/api/app2/users/follow/${user._id}`, {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
