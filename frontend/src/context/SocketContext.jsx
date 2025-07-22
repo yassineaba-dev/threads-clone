@@ -19,6 +19,8 @@ export const SocketContextProvider = ({ children }) => {
 			query: {
 				userId: user?._id,
 			},
+			transports: ["websocket"],
+	                withCredentials: true,     
 		});
 
 		setSocket(socket);
