@@ -88,9 +88,9 @@ const MessageContainer = () => {
 			setMessages([]);
 			try {
 				if (selectedConversation.mock) return;
-				const res = await fetch(
-					API_URL + `/api/app2/messages/${selectedConversation.userId}`,
+				const res = await fetch(API_URL + `/api/app2/messages/${selectedConversation.userId}`, {
 				        credentials: "include",
+				    }
 				);
 				const data = await res.json();
 				if (data.error) {
