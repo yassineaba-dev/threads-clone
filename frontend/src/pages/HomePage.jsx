@@ -16,7 +16,7 @@ const HomePage = () => {
 			setLoading(true);
 			setPosts([]);
 			try {
-				const res = await fetch(API_URL + "/api/app2/posts/feed");
+				const res = await fetch(API_URL + "/api/app2/posts/feed", {credentials: "include"});
 				const data = await res.json();
 				if (data.error) {
 					showToast("Error", data.error, "error");
