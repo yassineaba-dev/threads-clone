@@ -60,6 +60,7 @@ const CreatePost = () => {
 		try {
 			const res = await fetch(API_URL + "/api/app2/posts/create", {
 				method: "POST",
+				credentials: "include",
 				headers: {
 					"Content-Type": "application/json",
 				},
