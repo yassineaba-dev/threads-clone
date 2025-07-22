@@ -21,6 +21,7 @@ const useFollowUnfollow = (user) => {
 		try {
 			const res = await fetch(API_URL + `/api/app2/users/follow/${user._id}`, {
 				method: "POST",
+				credentials: "include",
 				headers: {
 					"Content-Type": "application/json",
 				},
