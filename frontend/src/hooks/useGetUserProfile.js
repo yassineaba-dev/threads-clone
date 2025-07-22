@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom";
 import useShowToast from "./useShowToast";
 
 const useGetUserProfile = () => {
+	const API_URL = import.meta.env.VITE_API_URL;
 	const [user, setUser] = useState(null);
 	const [loading, setLoading] = useState(true);
 	const { username } = useParams();
@@ -11,7 +12,7 @@ const useGetUserProfile = () => {
 	useEffect(() => {
 		const getUser = async () => {
 			try {
-				const res = await fetch(`/api/app2/users/profile/${username}`);
+				const res = await fetch(API_URL + `/api/app2/users/profile/${username}`);
 				const data = await res.json();
 				if (data.error) {
 					showToast("Error", data.error, "error");
