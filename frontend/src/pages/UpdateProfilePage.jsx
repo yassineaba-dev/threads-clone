@@ -40,6 +40,7 @@ export default function UpdateProfilePage() {
 		try {
 			const res = await fetch(API_URL + `/api/app2/users/update/${user._id}`, {
 				method: "PUT",
+				credentials: "include",
 				headers: {
 					"Content-Type": "application/json",
 				},
