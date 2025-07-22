@@ -39,6 +39,7 @@ const Actions = ({ post }) => {
 		try {
 			const res = await fetch(API_URL + "/api/app2/posts/like/" + post._id, {
 				method: "PUT",
+				credentials: "include",
 				headers: {
 					"Content-Type": "application/json",
 				},
@@ -81,6 +82,7 @@ const Actions = ({ post }) => {
 		try {
 			const res = await fetch(API_URL + "/api/app2/posts/reply/" + post._id, {
 				method: "PUT",
+				credentials: "include",
 				headers: {
 					"Content-Type": "application/json",
 				},
