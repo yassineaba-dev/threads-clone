@@ -9,6 +9,7 @@ import { useRecoilState } from "recoil";
 import postsAtom from "../atoms/postsAtom";
 
 const UserPage = () => {
+	const API_URL = import.meta.env.VITE_API_URL;
 	const { user, loading } = useGetUserProfile();
 	const { username } = useParams();
 	const showToast = useShowToast();
@@ -20,7 +21,7 @@ const UserPage = () => {
 			if (!user) return;
 			setFetchingPosts(true);
 			try {
-				const res = await fetch(`/api/app2/posts/user/${username}`);
+				const res = await fetch(API_URL + `/api/app2/posts/user/${username}`);
 				const data = await res.json();
 				console.log(data);
 				setPosts(data);
