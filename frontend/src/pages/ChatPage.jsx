@@ -11,6 +11,7 @@ import userAtom from "../atoms/userAtom";
 import { useSocket } from "../context/SocketContext";
 
 const ChatPage = () => {
+	const API_URL = import.meta.env.VITE_API_URL;
 	const [searchingUser, setSearchingUser] = useState(false);
 	const [loadingConversations, setLoadingConversations] = useState(true);
 	const [searchText, setSearchText] = useState("");
@@ -43,7 +44,7 @@ const ChatPage = () => {
 	useEffect(() => {
 		const getConversations = async () => {
 			try {
-				const res = await fetch("/api/app2/messages/conversations");
+				const res = await fetch(API_URL + "/api/app2/messages/conversations");
 				const data = await res.json();
 				if (data.error) {
 					showToast("Error", data.error, "error");
@@ -65,7 +66,7 @@ const ChatPage = () => {
 		e.preventDefault();
 		setSearchingUser(true);
 		try {
-			const res = await fetch(`/api/app2/users/profile/${searchText}`);
+			const res = await fetch(API_url + `/api/app2/users/profile/${searchText}`);
 			const searchedUser = await res.json();
 			if (searchedUser.error) {
 				showToast("Error", searchedUser.error, "error");
