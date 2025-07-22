@@ -23,6 +23,7 @@ const Post = ({ post, postedBy }) => {
 		const getUser = async () => {
 			try {
 				const res = await fetch(API_URL + "/api/app2/users/profile/" + postedBy);
+				credentials: "include",
 				const data = await res.json();
 				if (data.error) {
 					showToast("Error", data.error, "error");
