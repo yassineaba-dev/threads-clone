@@ -12,6 +12,7 @@ import userAtom from "../atoms/userAtom";
 import postsAtom from "../atoms/postsAtom";
 
 const Post = ({ post, postedBy }) => {
+	const API_URL = import.meta.env.VITE_API_URL;
 	const [user, setUser] = useState(null);
 	const showToast = useShowToast();
 	const currentUser = useRecoilValue(userAtom);
@@ -21,7 +22,7 @@ const Post = ({ post, postedBy }) => {
 	useEffect(() => {
 		const getUser = async () => {
 			try {
-				const res = await fetch("/api/app2/users/profile/" + postedBy);
+				const res = await fetch(API_URL + "/api/app2/users/profile/" + postedBy);
 				const data = await res.json();
 				if (data.error) {
 					showToast("Error", data.error, "error");
@@ -42,7 +43,7 @@ const Post = ({ post, postedBy }) => {
 			e.preventDefault();
 			if (!window.confirm("Are you sure you want to delete this post?")) return;
 
-			const res = await fetch(`/api/app2/posts/${post._id}`, {
+			const res = await fetch(API_URL + `/api/app2/posts/${post._id}`, {
 				method: "DELETE",
 			});
 			const data = await res.json();
