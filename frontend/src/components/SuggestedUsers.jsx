@@ -13,7 +13,7 @@ const SuggestedUsers = () => {
 		const getSuggestedUsers = async () => {
 			setLoading(true);
 			try {
-				const res = await fetch(API_URL + "/api/app2/users/suggested");
+				const res = await fetch(API_URL + "/api/app2/users/suggested", {credentials: "include"});
 				const data = await res.json();
 				if (data.error) {
 					showToast("Error", data.error, "error");
