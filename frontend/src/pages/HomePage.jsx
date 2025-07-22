@@ -7,6 +7,7 @@ import postsAtom from "../atoms/postsAtom";
 import SuggestedUsers from "../components/SuggestedUsers";
 
 const HomePage = () => {
+	const API_URL = import.meta.env.VITE_API_URL;
 	const [posts, setPosts] = useRecoilState(postsAtom);
 	const [loading, setLoading] = useState(true);
 	const showToast = useShowToast();
@@ -15,7 +16,7 @@ const HomePage = () => {
 			setLoading(true);
 			setPosts([]);
 			try {
-				const res = await fetch("/api/app2/posts/feed");
+				const res = await fetch(API_URL + "/api/app2/posts/feed");
 				const data = await res.json();
 				if (data.error) {
 					showToast("Error", data.error, "error");
