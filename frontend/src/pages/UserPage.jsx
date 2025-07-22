@@ -21,7 +21,7 @@ const UserPage = () => {
 			if (!user) return;
 			setFetchingPosts(true);
 			try {
-				const res = await fetch(API_URL + `/api/app2/posts/user/${username}`);
+				const res = await fetch(API_URL + `/api/app2/posts/user/${username}`,{credentials: "include"});
 				const data = await res.json();
 				console.log(data);
 				setPosts(data);
