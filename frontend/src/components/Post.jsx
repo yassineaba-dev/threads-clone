@@ -22,8 +22,8 @@ const Post = ({ post, postedBy }) => {
 	useEffect(() => {
 		const getUser = async () => {
 			try {
-				const res = await fetch(API_URL + "/api/app2/users/profile/" + postedBy);
-				credentials: "include",
+				const res = await fetch(API_URL + "/api/app2/users/profile/" + postedBy, {credentials: "include"});
+				
 				const data = await res.json();
 				if (data.error) {
 					showToast("Error", data.error, "error");
