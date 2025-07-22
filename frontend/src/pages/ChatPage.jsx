@@ -44,7 +44,7 @@ const ChatPage = () => {
 	useEffect(() => {
 		const getConversations = async () => {
 			try {
-				const res = await fetch(API_URL + "/api/app2/messages/conversations");
+				const res = await fetch(API_URL + "/api/app2/messages/conversations",{credentials: "include"});
 				const data = await res.json();
 				if (data.error) {
 					showToast("Error", data.error, "error");
@@ -66,7 +66,7 @@ const ChatPage = () => {
 		e.preventDefault();
 		setSearchingUser(true);
 		try {
-			const res = await fetch(API_url + `/api/app2/users/profile/${searchText}`);
+			const res = await fetch(API_url + `/api/app2/users/profile/${searchText}`, {credentials: "include"});
 			const searchedUser = await res.json();
 			if (searchedUser.error) {
 				showToast("Error", searchedUser.error, "error");
